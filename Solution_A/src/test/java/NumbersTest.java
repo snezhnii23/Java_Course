@@ -12,13 +12,12 @@ public class NumbersTest {
 
         Numbers numbers = new Numbers();
 
-        int n = 7;
-        for (int i = 0; i < n; i++) {
+        int Amount = 7;
+        for (int i = 0; i < Amount; i++) {
             String[] Input = Test_Info[i].split(" ");
             ArrayList<String> Result = numbers.Counting(Input);
             String Output = Result.toString();
             assertEquals(Output, Results[i]);
-            //System.out.println(Result);
         }
 
     }
