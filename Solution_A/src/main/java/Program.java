@@ -6,10 +6,10 @@ public class Program {
 
     public static void main(String[] args)
     {
-        String[] Test_Info = {"5", "3", "1", "2", "2"};
+        String[] testInfo = {"5", "3", "1", "2", "2"};
         Numbers numbers = new Numbers();
-        ArrayList<String> Result = numbers.Counting(Test_Info);
-        System.out.println(Result);
+        ArrayList<String> result = numbers.counting(testInfo);
+        System.out.println(result);
     }
 
 }

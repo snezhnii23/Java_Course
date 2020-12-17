@@ -13,78 +13,78 @@ public class Numbers {
         }
     }
 
-    public static ArrayList<String> Division(int[] Counts, int Starting_Noun, int Summa, String string, int Amount, ArrayList<String> Result_Arrays) {
-        ArrayList<String> Result = Result_Arrays;
+    public static ArrayList<String> division(int[] counts, int starting_Noun, int summa, String string, int amount, ArrayList<String> resultArrays) {
+        ArrayList<String> result = resultArrays;
 
-        if (Summa == 0) {
-            Result.add(string);
-            return Result;
+        if (summa == 0) {
+            result.add(string);
+            return result;
         } else {
-            if (Summa < 0) {
-                return Result;
+            if (summa < 0) {
+                return result;
             }
-            for (int i = Starting_Noun; i < Amount; i++) {
-                Result = Division(Counts, i, Summa - Counts[i], string + " " + Integer.toString(Counts[i]), Amount, Result);
+            for (int i = starting_Noun; i < amount; i++) {
+                result = division(counts, i, summa - counts[i], string + " " + Integer.toString(counts[i]), amount, result);
             }
-            return Result;
+            return result;
         }
     }
 
-    public static ArrayList<String> Counting(String[] args) {
+    public static ArrayList<String> counting(String[] args) {
 
-        ArrayList<String> Result = new ArrayList();
+        ArrayList<String> result = new ArrayList();
 
-        String[] Input = args;
+        String[] input = args;
 
-        if (!isNumeric(Input[0])) {
-            Result.add("Error");
-            return Result;
+        if (!isNumeric(input[0])) {
+            result.add("Error");
+            return result;
         }
-        int Summa = Integer.parseInt(Input[0]);
+        int summa = Integer.parseInt(input[0]);
 
-        if (Summa < 0) {
-            Result.add("Error");
-            return Result;
+        if (summa < 0) {
+            result.add("Error");
+            return result;
         }
 
-        if (!isNumeric(Input[1])) {
-            Result.add("Error");
-            return Result;
+        if (!isNumeric(input[1])) {
+            result.add("Error");
+            return result;
         }
-        int Amount = Integer.parseInt(Input[1]);
-        int[] Counts = new int[Amount];
+        int amount = Integer.parseInt(input[1]);
+        int[] counts = new int[amount];
 
-        int Count = 0;
-        for (int i = 0; i < Amount; i++) {
-            if (!isNumeric(Input[i + 2])) {
-                Result.add("Error");
-                return Result;
+        int count = 0;
+        for (int i = 0; i < amount; i++) {
+            if (!isNumeric(input[i + 2])) {
+                result.add("Error");
+                return result;
             }
             int t = 1;
-            for (int j = 0; j < Counts.length; j++) {
-                if (Counts[j] == Integer.parseInt(Input[2 + i])) {
+            for (int j = 0; j < counts.length; j++) {
+                if (counts[j] == Integer.parseInt(input[2 + i])) {
                     t = 0;
                 }
             }
 
-            if (Integer.parseInt(Input[2 + i]) <= 0) {
-                Result.add("Error");
-                return Result;
+            if (Integer.parseInt(input[2 + i]) <= 0) {
+                result.add("Error");
+                return result;
             }
 
             if (t == 1) {
-                Counts[Count] = Integer.parseInt(Input[2 + i]);
-                Count++;
+                counts[count] = Integer.parseInt(input[2 + i]);
+                count++;
             }
         }
 
-        Amount = Count;
+        amount = count;
 
-        Arrays.sort(Counts, 0, Amount);
+        Arrays.sort(counts, 0, amount);
 
-        Result = Division(Counts, 0, Summa, "", Amount, Result);
+        result = division(counts, 0, summa, "", amount, result);
 
-        return Result;
+        return result;
     }
 }
 
