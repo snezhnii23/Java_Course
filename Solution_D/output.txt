@@ -1,0 +1,11 @@
+Test_Dir/ 
+ file_1.jpg
+ dir_1/ 
+  dir_1_file_1.jpg
+  dir_1_file_2.jpg
+  dir_1_1/ 
+ dir_2/ 
+  dir_2_file_1.jpg
+  dir_2_file_2.jpg
+  dir_2_1/ 
+   dir_2_1_file_1.jpg
