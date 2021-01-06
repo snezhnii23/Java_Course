@@ -9,29 +9,41 @@ public class FileSystemAnalysis {
     private static List<File> files = new ArrayList<File>();
     private static List<String> filesPlus = new ArrayList<String>();
 
-    public static void main(String[] args) {
+    public static String main(String[] args) throws IOException {
         String nameFile = args[2];
+        String result = "";
         try(FileWriter writer = new FileWriter(nameFile, false))
         {
             String parent = args[0];
             String child = args[1];
-            getSubFiles(files, filesPlus, new File(parent, child), "");
-            
-            StringBuilder sb = new StringBuilder();
-            int k = 0;
-            for (Object file : files.toArray()) {
+            File newFile = new File(parent, child);
+            if (newFile.exists())
+            {
+                getSubFiles(files, filesPlus, new File(parent, child), "");
 
-                if (((File) file).isDirectory()) {
-                    writer.append(filesPlus.get(k) + ((File) file).getName() + "/ \n");
-                } else {
-
-                    writer.append(filesPlus.get(k) + ((File) file).getName() + "\n");
+                StringBuilder sb = new StringBuilder();
+                int k = 0;
+                for (Object file : files.toArray()) {
+                    if (((File) file).isDirectory()) {
+                        writer.append(filesPlus.get(k) + ((File) file).getName() + "/ \n");
+                        result += filesPlus.get(k) + ((File) file).getName() + "/ \n";
+                    } else {
+                        writer.append(filesPlus.get(k) + ((File) file).getName() + "\n");
+                        result += filesPlus.get(k) + ((File) file).getName() + "\n";
+                    }
+                    k++;
                 }
-                k++;
+            }
+            else
+            {
+                writer.append("Directory not exists\n");
+                result = "Directory not exists\n";
             }
             writer.flush();
+            return result;
         } catch (IOException e) {
             e.printStackTrace();
+            return "Error";
         }
     }
 
